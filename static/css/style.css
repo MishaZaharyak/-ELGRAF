@@ -474,6 +474,10 @@ body::-webkit-scrollbar-thumb {
   margin-top: 40px;
 }
 
+.main_slider_section .slick-slide:focus {
+  outline: none;
+}
+
 .slider_nav_section {
   position: relative;
 }
