@@ -1,0 +1,281 @@
+@import "./vars.scss";
+// @mixin grid($cols, $mrg) {
+//   margin-right: $mrg;
+//   margin-bottom: $mrg;
+//   width: ((100% - (($cols - 1) * $mrg)) / $cols);
+
+//   &:nth-child(#{$cols}n) {
+//     margin-right: 0;
+//   }
+// }
+
+@mixin amination($name, $sec) {
+  -webkit-animation-name: $name;
+  animation-name: $name;
+  -webkit-animation-duration: $sec;
+  animation-duration: $sec;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@mixin animated($sec) {
+  -webkit-animation-duration: $sec;
+  animation-duration: $sec;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@mixin maxQ($width...) {
+  @if length($width) == 1 {
+    @media (max-width: nth($width, 1)) {
+      @content;
+    }
+  } @else if length($width) == 2 {
+    @media (min-width: nth($width, 1)) and (max-width: nth($width, 2)) {
+      @content;
+    }
+  }
+}
+
+@mixin minQ($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin circle_btn($args...) {
+  width: nth($list: $args, $n: 1);
+  height: nth($list: $args, $n: 1);
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: nth($list: $args, $n: 3);
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  img {
+    transform: scale(nth($list: $args, $n: 2));
+  }
+  @if length($list: $args) == 4 {
+    &:hover {
+      background-color: nth($list: $args, $n: 4);
+    }
+  }
+}
+
+@mixin button($bg, $color, $padding) {
+  background-color: $bg;
+  padding: $padding 20px;
+  color: $color;
+  font-size: 15px;
+  line-height: 0;
+  font-weight: bold;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  border-radius: 20px;
+  font-weight: 900;
+
+  &:hover {
+    color: white;
+    background-color: $text_primary_light;
+  }
+}
+
+@mixin slider_text {
+  .item__text_top {
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    max-width: max-content;
+    color: white;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .item__text_bottom {
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    max-width: max-content;
+    color: $yellow;
+    font-weight: 900;
+  }
+}
+
+@mixin slider_height($height) {
+  height: $height;
+
+  .slider_nav_section {
+    .slider_nav__img {
+      height: $height;
+    }
+
+    .slider_nav {
+      height: $height;
+    }
+  }
+  .slider_for_section {
+    .item {
+      height: $height;
+    }
+  }
+}
+
+@mixin navigation($img, $color, $hover) {
+  list-style-type: none;
+
+  .nav__item {
+    position: relative;
+    font-weight: bold;
+    color: $color;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: color 0.3s ease;
+
+    @include minQ(992px) {
+      &.active {
+        color: $text_primary_dark !important;
+        span {
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background-color: $text_primary_dark;
+            bottom: -5px;
+            left: 0;
+          }
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      @include minQ(1200px) {
+        margin-right: 25px;
+      }
+    }
+    &::after {
+      content: url($img);
+      position: absolute;
+      line-height: 0;
+      left: 0;
+      top: calc(50% - 6px);
+    }
+
+    &:hover {
+      color: $hover !important;
+
+      &::after {
+        content: url("../images/icons/plus_blue.png");
+      }
+
+      span::after {
+        background-color: $yellow;
+      }
+    }
+
+    a {
+      padding: 5px 0 5px 50px;
+      display: block;
+    }
+  }
+}
+
+@mixin form($width, $inner_width, $height, $padding) {
+  .form_container {
+    width: $width;
+    background-color: $text_primary_dark;
+    color: white;
+    height: $height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form_container__inner {
+    max-width: $inner_width;
+    padding: $padding;
+  }
+
+  .header__title {
+    font-weight: 900;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .header__sub_title {
+    font-style: italic;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.1;
+    font-size: 13px;
+
+    b {
+      font-weight: 900;
+    }
+  }
+
+  form {
+    input[type="text"] {
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid $text_primary_light;
+      width: 100%;
+      padding-bottom: 5px;
+      color: white;
+
+      &:focus {
+        outline: none;
+
+        &::placeholder {
+          font-size: 11px;
+        }
+      }
+    }
+
+    ::placeholder {
+      color: white;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    p {
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      cursor: pointer;
+      @include button($yellow, $text_primary_dark, 13px);
+    }
+  }
+
+  .file_btn {
+    cursor: pointer;
+    @include button($text_primary_light, white, 12px);
+    padding: 12px 15px;
+    font-size: 11px;
+    margin-left: 15px;
+
+    &:hover {
+      color: $text_primary_dark;
+      background-color: $yellow;
+    }
+  }
+}
