@@ -472,6 +472,7 @@ body {
     }
     .item__text {
       display: flex;
+      background-color: rgba(0, 0, 0, 0.49);
     }
   }
 }
@@ -659,6 +660,10 @@ body {
   padding-top: 90px;
   position: relative;
 
+  .pack_image {
+    display: none;
+  }
+
   .presentation__inner {
     margin-top: 80px;
     background-color: $grey_bg;
@@ -835,6 +840,11 @@ body {
 
 @media (max-width: 767px) {
   .presentation_section {
+    .pack_image {
+      display: block;
+      max-height: 400px;
+      margin: 0 auto 25px;
+    }
     .presentation__inner {
       padding-top: 50px;
     }
