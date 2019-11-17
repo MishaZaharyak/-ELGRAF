@@ -81,7 +81,10 @@
                                                 <span>Діючі представництва та як стати партнером</span></a>
                                         </li>
                                     </ul>
-                                    <a href="#" class="a-link btn order_btn">Оформити замовлення</a>
+                                    <a href="#" 
+                                    data-toggle="modal" 
+                                    data-target="#orderModalForm" 
+                                    class="a-link btn order_btn">Оформити замовлення</a>
                                 </div>
                             </div>
                         </div>
@@ -595,7 +598,50 @@
 					</div>
 				</div>
 			</footer>
-		</div>
+        </div>
+         <!-- Modal -->
+      <div class="modal fade" id="orderModalForm" tabindex="-1" role="dialog" 
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  Закрити
+              <img class="ml-2" src="./static/images/icons/times.png" alt="">
+            </button>
+            <div class="form_container">
+                  <div class="form_container__inner">
+                      <div class="form__header">
+                          <h4 class="header__title">оФормити замовлення
+                          </h4>
+                      </div>
+                      <form action="">
+                          <p><input type="text" placeholder="Як до вас звертатись "></p>
+                          <p><input type="text" placeholder="Імя, по-батькові, прізвище"></p>
+                          <p><input type="text" placeholder="Найменування компанії"></p>
+                          <p><input type="text" placeholder="Номер телефону"></p>
+                          <p><input type="text" placeholder="E-mail"></p>
+                          <p><input type="text" placeholder="Опис продукції"></p>
+                          <p><input type="text" placeholder="Зручний час/спосіб для зворотнього звязку"></p>
+                          <p>Малюнок/креслення
+                              <input id="file-upload" type="file" placeholder="Малюнок/креслення">
+                              <label for="file-upload" class="file_btn">
+                                  завантажити
+                              </label>
+                          </p>
+                          <p><input type="submit" value="відправити"></p>
+                      </form>
+                  </div>
+                  <div class="form__footer d-flex align-items-center">
+                      <img class="mr-2" src="./static/images/icons/safe.png" alt="">
+                      <div>
+                          <p><b>Ваша конфиденциальность очень важна для нас.</b></p>
+                          <p>Ваша информация не будет передана или продана третьим сторонам.</p>
+                      </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+    </div>
 		<script src="./static/vendor/jquery/jquery-3.4.1.min.js"></script>
 		<script src="./static/vendor/jquery/popper.min.js"></script>
 		<script src="./static/vendor/slick/slick.min.js"></script>
