@@ -127,14 +127,15 @@ $("#nav-icon3").on("click", function(e) {
 
 // map
 (function($) {
-  var map;
+  var map, icon;
 
   $(".google_map").each(function(index, element) {
     var main_lato = Number($(this).attr("data-lat"));
     var main_longo = Number($(this).attr("data-long"));
     var main_texto = $(this).attr("data-desc");
-    var icon = {
-      url: "./soprano-source/images/Group299.png",
+
+    icon = {
+      url: "./static/images/icons/location.png",
       size: new google.maps.Size(28, 38),
       scaledSize: new google.maps.Size(28, 38),
       labelOrigin: new google.maps.Point(20, -20)
@@ -145,12 +146,14 @@ $("#nav-icon3").on("click", function(e) {
       scrollwheel: false,
       lat: main_lato,
       lng: main_longo,
+
       zoom: 6
     });
 
     map.addMarker({
       lat: main_lato,
       lng: main_longo,
+      icon: icon,
       infoWindow: {
         content: main_texto
       }
@@ -168,6 +171,7 @@ $("#nav-icon3").on("click", function(e) {
     var marker = map.addMarker({
       lat: lato,
       lng: longo,
+      icon: icon,
       infoWindow: {
         content: content
       },

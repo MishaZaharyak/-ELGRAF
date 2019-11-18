@@ -18,6 +18,10 @@ body {
   }
 }
 
+.slick-slide:focus {
+  outline: none !important;
+}
+
 .a-link {
   text-decoration: none;
   color: inherit;
@@ -326,9 +330,6 @@ body {
 
   .order_btn {
     margin-top: 40px;
-  }
-  .slick-slide:focus {
-    outline: none;
   }
 }
 

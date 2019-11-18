@@ -14,6 +14,10 @@ body::-webkit-scrollbar-thumb {
   background-color: #000c5a;
 }
 
+.slick-slide:focus {
+  outline: none !important;
+}
+
 .a-link {
   text-decoration: none;
   color: inherit;
@@ -472,10 +476,6 @@ body::-webkit-scrollbar-thumb {
 
 .main_slider_section .order_btn {
   margin-top: 40px;
-}
-
-.main_slider_section .slick-slide:focus {
-  outline: none;
 }
 
 .slider_nav_section {
